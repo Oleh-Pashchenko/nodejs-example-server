@@ -1,0 +1,39 @@
+{
+  "name": "nodejs-example-server",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "lint": "node ./node_modules/eslint/bin/eslint ./*.js ./**/*.js",
+    "lint:fix": "node ./node_modules/eslint/bin/eslint --fix ./*.js ./**/*.js",
+    "start": "./node_modules/pm2/bin/pm2 start ecosystem.config.js --no-daemon",
+    "start:demon": "./node_modules/pm2/bin/pm2 start ecosystem.config.js",
+    "stop": "./node_modules/.bin/pm2 stop config/ecosystem.config.js",
+    "test": "node node_modules/jest/bin/jest test --watch --coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.15.3",
+    "express-validator": "^5.3.1",
+    "http-status-codes": "^1.1.6",
+    "jsonwebtoken": "^8.4.0",
+    "morgan": "^1.8.2",
+    "pm2": "^2.6.1",
+    "redis": "^2.8.0",
+    "swagger-ui-express": "^4.0.2",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "chai-http": "^4.2.1",
+    "eslint": "^4.2.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "jest": "^20.0.4"
+  }
+}
