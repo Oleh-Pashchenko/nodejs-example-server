@@ -4,7 +4,9 @@ COPY . /var/www
 
 WORKDIR /var/www
 
-VOLUME [ "/var/www", "/var/www/node_modules" ]
+ENV HOST="0.0.0.0"
+
+RUN npm install
 
 EXPOSE 3000
 
