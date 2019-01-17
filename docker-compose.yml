@@ -9,8 +9,21 @@ services:
       - .env
     environment:
       HOST: 0.0.0.0
+    links:
+      - db
+    depends_on:
+      - db
   redis:
     image: redis
     container_name: cache
     expose:
       - 6379
+    ports:
+      - "6379:6379"
+  db:
+    image: postgres:10.4-alpine
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+
