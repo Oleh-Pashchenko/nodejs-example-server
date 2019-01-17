@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
         name: 'prefect',
-        script: './bin/www',
+        script: './.bin/www',
         watch: true,
         env: {
             NODE_ENV: 'development',
