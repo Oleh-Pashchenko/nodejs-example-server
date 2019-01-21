@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const dotenv = require('dotenv');
+const { config } = require('dotenv');
 const expressValidator = require('express-validator');
 const { json, urlencoded } = require('body-parser');
 const { serve, setup } = require('swagger-ui-express');
@@ -11,7 +11,7 @@ const { validatorController } = require('./controllers');
 const app = express();
 const swaggerSpecification = require('./utils/swagger');
 
-dotenv.config();
+config();
 
 app.use(cors());
 app.use(morgan('dev'));
