@@ -20,49 +20,49 @@ module.exports = {
     consumes: ['application/json'],
     produces: ['application/json'],
     paths: {
-        "/user": {
+        '/user': {
             get: {
-                tags: ["User"],
-                description: "Get users",
-                produces: ["application/json"],
-                summary: "Get users",
+                tags: ['User'],
+                description: 'Get users',
+                produces: ['application/json'],
+                summary: 'Get users',
                 security: [{
-                    JWTUser: []
+                    JWTUser: [],
                 }],
                 responses: {
-                200: {
-                    description: "Get users",
-                    schema: {
-                    type: "object",
-                    properties: {
-                        code: {
-                            type: "number",
-                            example: 200
+                    200: {
+                        description: 'Get users',
+                        schema: {
+                            type: 'object',
+                            properties: {
+                                code: {
+                                    type: 'number',
+                                    example: 200,
+                                },
+                                result: {
+                                    type: 'array',
+                                    items: {
+                                        type: 'object',
+                                        properties: {
+                                            id: {
+                                                type: 'number',
+                                                example: 1,
+                                            },
+                                            username: {
+                                                type: 'string',
+                                                example: 'username',
+                                            },
+                                            age: {
+                                                type: 'number',
+                                                example: 20,
+                                            },
+                                        },
+                                    },
+                                },
+                            },
                         },
-                        result: {
-                            type: "array",
-                            items: {
-                                type: 'object',
-                                properties: {
-                                    id: {
-                                        type: "number",
-                                        example: 1
-                                    },
-                                    username: {
-                                        type: "string",
-                                        example: "username"
-                                    },
-                                    age: {
-                                        type: "number",
-                                        example: 20
-                                    },
-                                }
-                            }
-                        },
-                    }
-                    }
-                }
-                }
+                    },
+                },
             },
             post: {
                 tags: ['User'],
@@ -79,7 +79,7 @@ module.exports = {
                             type: 'object',
                             required: [
                                 'username',
-                                'password'
+                                'password',
                             ],
                             properties: {
                                 username: {
@@ -96,7 +96,7 @@ module.exports = {
                                     type: 'number',
                                     example: 21,
                                     description: 'User age',
-                                }
+                                },
                             },
                         },
                     },
@@ -125,5 +125,5 @@ module.exports = {
                 },
             },
         },
-},
+    },
 };

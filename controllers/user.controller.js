@@ -6,11 +6,11 @@ const { setUserToken } = require('../services/redis.service');
 exports.create = async ({ body }, res) => {
     const user = await create({
         username: body.username,
-        password: body.password
+        password: body.password,
     });
-    const userId = user.getDataValue("id")
+    const userId = user.getDataValue('id');
     const jwt = generateJWT(userId);
-    
+
     setUserToken(userId, jwt.token);
 
     return res.json({
