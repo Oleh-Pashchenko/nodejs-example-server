@@ -20,7 +20,7 @@ describe('Index service test', () => {
 });
 
 describe('Index API testing', () => {
-    it('should return 200 OK and message from GET /', (done) => {
+    it('should return 200 OK and message from GET /', () => {
         chai.request(server)
             .get('/')
             .end((err, res) => {
@@ -31,7 +31,7 @@ describe('Index API testing', () => {
                 expect(res).to.be.status(200);
                 expect(res.body.message).is.equal('Working');
 
-                done();
+                // done();
             });
     });
 });

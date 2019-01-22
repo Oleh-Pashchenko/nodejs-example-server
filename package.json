@@ -10,7 +10,7 @@
     "start": "./node_modules/.bin/pm2-runtime start ecosystem.config.js --watch",
     "start:demon": "./node_modules/.bin/pm2 start ecosystem.config.js",
     "stop": "./node_modules/.bin/pm2 stop config/ecosystem.config.js",
-    "test": "node node_modules/.bin/jest test --watch --coverage"
+    "test": "node node_modules/.bin/jest test --coverage"
   },
   "husky": {
     "hooks": {
