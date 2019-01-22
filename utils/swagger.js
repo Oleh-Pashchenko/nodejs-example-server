@@ -20,61 +20,61 @@ module.exports = {
     consumes: ['application/json'],
     produces: ['application/json'],
     paths: {
-        "/": {
+        '/': {
             get: {
-                tags: ["Index"],
-                description: "Get test index",
-                produces: ["application/json"],
-                summary: "Get test index",
+                tags: ['Index'],
+                description: 'Get test index',
+                produces: ['application/json'],
+                summary: 'Get test index',
                 parameters: [
                 ],
                 responses: {
-                200: {
-                    description: "Test index",
-                    schema: {
-                    type: "object",
-                    properties: {
-                        code: {
-                            type: "number",
-                            example: 200
+                    200: {
+                        description: 'Test index',
+                        schema: {
+                            type: 'object',
+                            properties: {
+                                code: {
+                                    type: 'number',
+                                    example: 200,
+                                },
+                                message: {
+                                    type: 'string',
+                                    example: 'Working',
+                                },
+                            },
                         },
-                        message: {
-                            type: "string",
-                            example: "Working"
-                        },
-                    }
-                    }
-                }
-                }
+                    },
+                },
             },
         },
-        "/test": {
+        '/test': {
             get: {
-                tags: ["Test"],
-                description: "Get test",
-                produces: ["application/json"],
-                summary: "Get test ",
+                tags: ['Test'],
+                description: 'Get test',
+                produces: ['application/json'],
+                summary: 'Get test ',
                 parameters: [
                 ],
                 responses: {
-                200: {
-                    description: "Test request",
-                    schema: {
-                    type: "object",
-                    properties: {
-                        code: {
-                            type: "number",
-                            example: 200
+                    200: {
+                        description: 'Test request',
+                        schema: {
+                            type: 'object',
+                            properties: {
+                                code: {
+                                    type: 'number',
+                                    example: 200,
+                                },
+                                message: {
+                                    type: 'string',
+                                    example: 'Test Working',
+                                },
+                            },
                         },
-                        message: {
-                            type: "string",
-                            example: "Test Working"
-                        },
-                    }
-                    }
-                }
-                }
+                    },
+                },
             },
         },
-},
+    },
 };
