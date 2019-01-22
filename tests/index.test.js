@@ -9,18 +9,18 @@ chai.use(chaiHttp);
 
 
 describe('Index service test', () => {
-    it('should return message from index', () => {
+    it('should return message from index', (done) => {
         const indexResult = index();
 
         expect(indexResult).to.be.a('string');
         expect(indexResult).is.equal('Working');
 
-    // done();
+        done();
     });
 });
 
 describe('Index API testing', () => {
-    it('should return 200 OK and message from GET /', () => {
+    it('should return 200 OK and message from GET /', (done) => {
         chai.request(server)
             .get('/')
             .end((err, res) => {
@@ -31,7 +31,7 @@ describe('Index API testing', () => {
                 expect(res).to.be.status(200);
                 expect(res.body.message).is.equal('Working');
 
-                // done();
+                done();
             });
     });
 });
