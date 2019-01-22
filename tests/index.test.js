@@ -14,7 +14,7 @@ describe("Index service test", () => {
     expect(indexResult).to.be.a("string");
     expect(indexResult).is.equal('Working');
     
-    done();
+    // done();
   });
 });
 
