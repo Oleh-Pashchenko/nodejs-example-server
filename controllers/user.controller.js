@@ -16,7 +16,7 @@ exports.create = async ({ body }, res) => {
     setUserToken(userId, jwt.token);
 
     const salt = await generateSalt(process.env.SALT_ROUNDS);
-    
+
     jwt.refreshToken = encrypt(jwt.refreshToken, process.env.SESSION_SECRET);
     jwt.token = encrypt(jwt.token, process.env.SESSION_SECRET, salt);
 
