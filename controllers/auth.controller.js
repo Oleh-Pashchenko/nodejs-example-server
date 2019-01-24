@@ -1,5 +1,5 @@
-const { verify } = require('../services/jwt.service');
 const { INTERNAL_SERVER_ERROR, NOT_ACCEPTABLE } = require('http-status-codes');
+const { verify } = require('../services/jwt.service');
 const { getTokenAsync } = require('../services/redis.service');
 
 module.exports = async (req, res, next) => {

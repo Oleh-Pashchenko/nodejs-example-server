@@ -1,0 +1,15 @@
+{
+    "env": {
+        "jest": true
+    },
+    "extends": "airbnb-base",
+    "rules": {
+        "indent": [2, 4],
+        "no-unneeded-ternary":0,
+        "no-underscore-dangle":0,
+        "import/no-dynamic-require": 0,
+        "global-require": 0,
+        "import/no-unresolved": 0,
+        "no-return-await": 0
+    }   
+}
