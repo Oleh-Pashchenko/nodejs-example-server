@@ -1,7 +1,7 @@
 const { createCipheriv, createDecipheriv, randomBytes, createHash } = require('crypto');
 
 const ENCRYPTION_KEY = createHash('sha256').update(String(process.env.SESSION_SECRET)).digest('base64').substr(0, 32);
-const IV_LENGTH = process.env.SALT_ROUNDS;
+const IV_LENGTH = 16;
 
 class CryptoService {
     static encrypt(text) {
