@@ -10,7 +10,7 @@
     "start": "npm run migrate-up & ./node_modules/.bin/pm2-runtime start ecosystem.config.js --watch",
     "start:demon": "./node_modules/.bin/pm2 start ecosystem.config.js",
     "stop": "./node_modules/.bin/pm2 stop config/ecosystem.config.js",
-    "test": "SESSION_SECRET=123321 node node_modules/.bin/jest test --coverage",
+    "test": "SALT_ROUNDS=11 SESSION_SECRET=123321 node node_modules/.bin/jest test --coverage",
     "migrate": "./node_modules/.bin/sequelize migration:generate --name ${name}",
     "migrate-up": "./node_modules/.bin/sequelize db:migrate",
     "migrate-down": "./node_modules/.bin/sequelize db:migrate:undo"
