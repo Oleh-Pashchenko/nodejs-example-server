@@ -1,18 +1,30 @@
-const { createCipher, createDecipher } = require('crypto');
+const { createCipheriv, createDecipheriv, randomBytes, createHash } = require('crypto');
+
+const ENCRYPTION_KEY = createHash('sha256').update(String(process.env.SESSION_SECRET)).digest('base64').substr(0, 32);
+const IV_LENGTH = 16;
 
 class CryptoService {
-    static encrypt(text, key) {
-        const cipher = createCipher('aes-256-cbc', key);
-        let crypted = cipher.update(text, 'utf8', 'hex');
-        crypted += cipher.final('hex');
-        return crypted;
+    static encrypt(text) {
+        const iv = randomBytes(IV_LENGTH);
+
+        const cipher = createCipheriv('aes-256-cbc', new Buffer(ENCRYPTION_KEY), iv);
+        let encrypted = cipher.update(text);
+
+        encrypted = Buffer.concat([encrypted, cipher.final()]);
+
+        return `${iv.toString('hex')}:${encrypted.toString('hex')}`;
     }
 
-    static decrypt(text, key) {
-        const decipher = createDecipher('aes-256-cbc', key);
-        let decrypted = decipher.update(text, 'hex', 'utf8');
-        decrypted += decipher.final('utf8');
-        return decrypted;
+    static decrypt(text) {
+        const textParts = text.split(':');
+        const iv = new Buffer(textParts.shift(), 'hex');
+        const encryptedText = new Buffer(textParts.join(':'), 'hex');
+        const decipher = createDecipheriv('aes-256-cbc', new Buffer(ENCRYPTION_KEY), iv);
+        let decrypted = decipher.update(encryptedText);
+
+        decrypted = Buffer.concat([decrypted, decipher.final()]);
+
+        return decrypted.toString();
     }
 }
 
