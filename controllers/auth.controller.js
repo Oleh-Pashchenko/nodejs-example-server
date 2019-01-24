@@ -7,8 +7,10 @@ module.exports = async (req, res, next) => {
         if (!req.headers.authorization) return res.status(NOT_ACCEPTABLE).send('Need authorization token in header');
 
         const token = req.headers.authorization.replace('Bearer ', '');
+
         const verified = verify(token);
         const redisToken = await getTokenAsync(verified.id);
+
         const redisVerified = verify(redisToken);
 
         if (verified.id === redisVerified.id) {

@@ -6,7 +6,7 @@ const expressValidator = require('express-validator');
 const { json, urlencoded } = require('body-parser');
 const { serve, setup } = require('swagger-ui-express');
 const { readdirSync } = require('fs');
-const { validatorController } = require('./controllers');
+const { validatorController, decryptController } = require('./controllers');
 
 const app = express();
 const swaggerSpecification = require('./utils/swagger');
@@ -16,6 +16,7 @@ app.use(morgan('dev'));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(expressValidator());
+app.use(decryptController);
 app.use(validatorController);
 
 /**
