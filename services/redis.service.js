@@ -1,5 +1,7 @@
 const redis = require('redis');
-const { error } = require('./logger.service');
+const {
+    error
+} = require('./logger.service');
 
 const client = redis.createClient(process.env.REDIS_URL);
 
@@ -12,8 +14,16 @@ class Redis {
         return client.set(userId, token, redis.print);
     }
 
-    static getTokenAsync(token) {
-        return client.getAsync(token);
+    static async getTokenAsync(token) {
+        return new Promise((resolve, reject) => {
+            client.get(token, (err, reply) => {
+                if (err) {
+                    return reject(err);
+                }
+
+                return resolve(reply);
+            });
+        });
     }
 }
 
