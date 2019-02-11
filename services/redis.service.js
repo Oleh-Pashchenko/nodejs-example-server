@@ -1,6 +1,6 @@
 const redis = require('redis');
 const {
-    error
+    error,
 } = require('./logger.service');
 
 const client = redis.createClient(process.env.REDIS_URL);

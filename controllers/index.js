@@ -9,4 +9,5 @@ module.exports = readdirSync('./controllers')
                 .filter(name => name !== 'index.js' && name === file)
                 .map(fileName => require(`./${fileName}`))
                 .reduce((_previousFile, controllerFile) => controllerFile, {}),
-        }), {});
+        },
+    ), {});
